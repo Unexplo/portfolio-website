@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+# Deploys on every merge/push to main, on a daily schedule (so the roadmap
+# re-syncs from GitHub Projects), and on manual trigger.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *" # daily 06:00 UTC — refreshes the roadmap board
+  workflow_dispatch:
+
+# Allow this workflow to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; cancel superseded runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          SITE_URL: https://unexplo.com
+          # Optional — set these as repo secrets/variables to enable extras.
+          # ROADMAP_TOKEN: a PAT with read:project (org Projects v2 read).
+          GITHUB_TOKEN: ${{ secrets.ROADMAP_TOKEN }}
+          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+          PUBLIC_NEWSLETTER_ACTION: ${{ vars.PUBLIC_NEWSLETTER_ACTION }}
+          PUBLIC_ACADEMY_FORM_URL: ${{ vars.PUBLIC_ACADEMY_FORM_URL }}
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
