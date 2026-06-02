@@ -60,7 +60,17 @@ All copy lives in plain data files — no CMS needed:
 
 ## Deploy
 
-Static output — host anywhere. For **Vercel / Netlify / Cloudflare Pages**: build command `npm run build`, output directory `dist`. Set the env vars above in the host's dashboard (mark `GITHUB_TOKEN` secret). Set up a periodic redeploy (or a deploy hook) if you want the roadmap to refresh on a schedule.
+Deployed to **GitHub Pages** via `.github/workflows/deploy.yml`: every merge to `main` builds and publishes automatically, a daily cron re-syncs the roadmap, and a manual run is available via *workflow_dispatch*. The custom domain `unexplo.com` is set in **Settings → Pages**; DNS points the apex at GitHub's four Pages IPs with `www` as a `CNAME` to `unexplo.github.io`.
+
+Build-time secrets/variables live in **Settings → Secrets and variables → Actions** (`ROADMAP_TOKEN`, `PROJECT_NUMBER`, `PUBLIC_*`) — never committed. The output is plain static files, so it can be hosted anywhere else (`npm run build` → serve `dist/`).
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md). PRs should keep `main` buildable, since merges deploy straight to production.
+
+## License
+
+The **code** is licensed under the [MIT License](./LICENSE) — fork and reuse it freely. The **Unexplo name, logo, and written content** are not covered by the MIT license; if you fork this as a starter, replace the branding and content (and update `public/CNAME`) before deploying.
 
 ---
 
