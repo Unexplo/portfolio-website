@@ -89,9 +89,13 @@ export type RoadmapResult = {
 };
 
 export async function getRoadmap(): Promise<RoadmapResult> {
-  const token = process.env.GITHUB_TOKEN;
-  const org = process.env.GITHUB_ORG;
-  const number = Number(process.env.GITHUB_PROJECT_NUMBER);
+  // ROADMAP_TOKEN / PROJECT_NUMBER are CI-friendly aliases (repo secrets and
+  // variables can't be named with the reserved GITHUB_ prefix).
+  const token = process.env.GITHUB_TOKEN || process.env.ROADMAP_TOKEN;
+  const org = process.env.GITHUB_ORG || "Unexplo";
+  const number = Number(
+    process.env.GITHUB_PROJECT_NUMBER || process.env.PROJECT_NUMBER,
+  );
 
   if (!token || !org || !Number.isFinite(number) || number <= 0) {
     return { items: fallbackRoadmap, columns, source: "local" };
