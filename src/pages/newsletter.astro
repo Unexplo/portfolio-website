@@ -1,0 +1,53 @@
+---
+import Base from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import NewsletterForm from "@/components/NewsletterForm.astro";
+import Icon from "@/components/Icon.astro";
+import { newsletter, site } from "@/data/site";
+
+const covers = [
+  "What's working in business AI right now",
+  "What's emerging at the frontier",
+  "The unknowns worth watching",
+];
+
+const jsonLd = [
+  {
+    "@type": "Periodical",
+    name: newsletter.name,
+    description: `${newsletter.tagline} ${newsletter.description}`,
+    url: "https://unexplo.com/newsletter",
+    publisher: { "@type": "Organization", name: "Unexplo", url: site.url },
+  },
+];
+---
+
+<Base
+  title="Newsletter"
+  description={`${newsletter.name} — ${newsletter.tagline} ${newsletter.description}`}
+  path="/newsletter"
+  jsonLd={jsonLd}
+>
+  <Section eyebrow="Unexplored" title={newsletter.name}>
+    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
+      {newsletter.tagline} {newsletter.description}
+    </p>
+
+    <div class="card max-w-xl p-8">
+      <h2 class="font-display text-xl">Subscribe</h2>
+      <p class="mt-1.5 text-sm text-[var(--color-ink-2)]">One email a week. Unsubscribe anytime.</p>
+      <div class="mt-5"><NewsletterForm /></div>
+    </div>
+  </Section>
+
+  <Section eyebrow="Each issue covers" title="Field notes from the frontier" class="!pt-0">
+    <ul class="grid gap-4 sm:grid-cols-3">
+      {covers.map((c) => (
+        <li class="card flex items-start gap-3 p-6">
+          <span class="mt-0.5 text-[var(--color-coral)]"><Icon name="spark" /></span>
+          <span class="text-sm leading-relaxed">{c}</span>
+        </li>
+      ))}
+    </ul>
+  </Section>
+</Base>

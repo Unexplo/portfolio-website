@@ -1,0 +1,82 @@
+---
+import { site } from "@/data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path-only canonical, e.g. "/labs". Defaults to current URL. */
+  path?: string;
+  image?: string;
+  type?: "website" | "article";
+  /** Extra JSON-LD objects to embed (already-shaped schema.org nodes). */
+  jsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  path,
+  image = site.ogImage,
+  type = "website",
+  jsonLd = [],
+  noindex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+const canonicalPath = path ?? (Astro.url.pathname.replace(/\/$/, "") || "/");
+const canonical = new URL(canonicalPath, Astro.site ?? site.url).href;
+const ogImageUrl = new URL(image, Astro.site ?? site.url).href;
+
+// Organization node is included on every page so LLMs and crawlers always
+// have the entity graph.
+const organization = {
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  description: site.description,
+  sameAs: ["https://github.com/Unexplo", "https://x.com/unexplo"],
+};
+
+const website = {
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  url: site.url,
+  name: site.name,
+  description: site.description,
+  publisher: { "@id": `${site.url}/#organization` },
+};
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [organization, website, ...jsonLd],
+};
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content={site.locale} />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+<meta name="twitter:site" content="@unexplo" />
+
+<!-- AI / LLM discovery -->
+<link rel="alternate" type="text/plain" href={`${site.url}/llms.txt`} title="llms.txt" />
+
+<script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />

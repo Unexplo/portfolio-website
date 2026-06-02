@@ -1,0 +1,47 @@
+---
+import { nav, site } from "@/data/site";
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-paper)]/85 backdrop-blur-md">
+  <div class="wrap flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center gap-2 font-display text-xl tracking-tight" aria-label={`${site.name} home`}>
+      <span class="inline-block h-2.5 w-2.5 rounded-full bg-[var(--color-coral)]"></span>
+      {site.name}
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+      {nav.map((item) => {
+        const active = current === item.href;
+        return (
+          <a
+            href={item.href}
+            aria-current={active ? "page" : undefined}
+            class:list={[
+              "rounded-full px-3.5 py-1.5 text-sm transition-colors",
+              active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]",
+            ]}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+      <a href="/contact" class="btn btn-primary ml-2 !py-1.5 !text-sm">Get in touch</a>
+    </nav>
+
+    <details class="md:hidden">
+      <summary class="list-none cursor-pointer rounded-md border border-[var(--color-line)] px-3 py-1.5 text-sm">Menu</summary>
+      <div class="absolute left-0 right-0 mt-3 border-y border-[var(--color-line)] bg-[var(--color-paper)] px-6 py-4">
+        <ul class="flex flex-col gap-1">
+          {nav.map((item) => (
+            <li>
+              <a href={item.href} class="block rounded-md px-3 py-2 text-[var(--color-ink-2)] hover:bg-[var(--color-paper-2)] hover:text-[var(--color-ink)]">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </details>
+  </div>
+</header>

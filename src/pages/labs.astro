@@ -1,0 +1,73 @@
+---
+import Base from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import Icon from "@/components/Icon.astro";
+import { projects } from "@/data/projects";
+
+const jsonLd = [
+  {
+    "@type": "CollectionPage",
+    name: "Unexplo Labs",
+    description: "Experiments and discovery — the four projects Unexplo is actively building.",
+    url: "https://unexplo.com/labs",
+    hasPart: projects.map((p) => ({
+      "@type": "SoftwareApplication",
+      name: p.name,
+      applicationCategory: p.domain,
+      description: p.description,
+    })),
+  },
+];
+
+const beliefs = [
+  { t: "Discovery first", d: "Every project begins as a question, not a feature list. We prototype to learn." },
+  { t: "You own the work", d: "Code, prompts, and infrastructure stay yours — from day one." },
+  { t: "Ship to learn", d: "Small, fast iterations beat grand plans. We put things in front of real users early." },
+  { t: "Practical over novel", d: "We optimize for outcomes that hold up in the real world, not demos." },
+];
+---
+
+<Base
+  title="Labs"
+  description="Unexplo Labs — experiments and discovery. Four projects exploring what AI makes newly possible across reading, memory, music, and gaming."
+  path="/labs"
+  jsonLd={jsonLd}
+>
+  <Section eyebrow="Unexplo Labs" title="Experiments and discovery">
+    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
+      The Labs are where we explore what modern AI makes newly possible. Four projects, each starting from a
+      question about how people read, remember, create, and play.
+    </p>
+
+    <div class="grid gap-5 sm:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </Section>
+
+  <Section eyebrow="How we work" title="The Labs ethos" class="border-t border-[var(--color-line)]">
+    <div class="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+      {beliefs.map((b) => (
+        <div class="flex gap-3">
+          <span class="mt-1 text-[var(--color-coral)]"><Icon name="spark" /></span>
+          <div>
+            <h3 class="font-display text-xl">{b.t}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-2)]">{b.d}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section class="!pt-0">
+    <div class="card flex flex-col items-start justify-between gap-4 p-8 sm:flex-row sm:items-center">
+      <div>
+        <h2 class="font-display text-2xl">Building in the open</h2>
+        <p class="mt-1.5 text-sm text-[var(--color-ink-2)]">Follow the source on our GitHub organization.</p>
+      </div>
+      <a href="https://github.com/Unexplo" target="_blank" rel="noopener" class="btn btn-ghost">
+        <Icon name="github" /> github.com/Unexplo
+      </a>
+    </div>
+  </Section>
+</Base>

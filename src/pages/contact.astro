@@ -1,0 +1,60 @@
+---
+import Base from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import Icon from "@/components/Icon.astro";
+import { site, socials } from "@/data/site";
+
+const jsonLd = [
+  {
+    "@type": "ContactPage",
+    name: "Contact Unexplo",
+    url: "https://unexplo.com/contact",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Unexplo",
+      email: site.email,
+      url: site.url,
+      sameAs: ["https://github.com/Unexplo", "https://x.com/unexplo"],
+    },
+  },
+];
+---
+
+<Base
+  title="Contact"
+  description="Get in touch with Unexplo — email contact@unexplo.com, or find us on GitHub and X."
+  path="/contact"
+  jsonLd={jsonLd}
+>
+  <Section eyebrow="Contact" title="Get in touch">
+    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
+      Questions about the Labs, the Academy, or working together? Reach out — we read everything.
+    </p>
+
+    <div class="grid gap-5 sm:grid-cols-2">
+      <a href={`mailto:${site.email}`} class="card group flex items-center justify-between p-6 transition-transform hover:-translate-y-1">
+        <div class="flex items-center gap-4">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-paper)] text-[var(--color-coral)]"><Icon name="mail" /></span>
+          <div>
+            <h2 class="font-display text-xl">Email</h2>
+            <p class="text-sm text-[var(--color-ink-2)]">{site.email}</p>
+          </div>
+        </div>
+        <Icon name="arrow" class="text-[var(--color-ink-2)] transition-transform group-hover:translate-x-0.5" />
+      </a>
+
+      {socials.map((s) => (
+        <a href={s.url} target="_blank" rel="noopener" class="card group flex items-center justify-between p-6 transition-transform hover:-translate-y-1">
+          <div class="flex items-center gap-4">
+            <span class="grid h-11 w-11 place-items-center rounded-full bg-[var(--color-paper)] text-[var(--color-ink)]"><Icon name={s.icon as "github" | "x"} /></span>
+            <div>
+              <h2 class="font-display text-xl">{s.label}</h2>
+              <p class="text-sm text-[var(--color-ink-2)]">{s.handle}</p>
+            </div>
+          </div>
+          <Icon name="arrow" class="text-[var(--color-ink-2)] transition-transform group-hover:translate-x-0.5" />
+        </a>
+      ))}
+    </div>
+  </Section>
+</Base>

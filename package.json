@@ -1,0 +1,21 @@
+{
+  "name": "unexplo-website",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "unexplo.com — Labs, Academy, Newsletter, Roadmap. AI engineered for your business.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "prebuild": "node scripts/generate-og.mjs",
+    "og": "node scripts/generate-og.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@tailwindcss/vite": "^4.0.6",
+    "astro": "^5.3.0",
+    "tailwindcss": "^4.0.6"
+  }
+}

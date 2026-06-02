@@ -1,0 +1,41 @@
+---
+import { newsletter, site } from "@/data/site";
+import Icon from "@/components/Icon.astro";
+
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+// If a provider action URL is configured, POST to it (most providers accept a
+// plain `email` field). Otherwise fall back to a mailto so the form always works.
+const hasProvider = Boolean(newsletter.action);
+const action = hasProvider ? newsletter.action : `mailto:${site.email}`;
+const method = hasProvider ? "post" : "get";
+---
+
+<form
+  action={action}
+  method={method}
+  target={hasProvider ? "_blank" : undefined}
+  class:list={["flex w-full gap-2", compact ? "" : "max-w-md"]}
+>
+  <label class="sr-only" for="nl-email">Email address</label>
+  <input
+    id="nl-email"
+    type="email"
+    name="email"
+    required
+    autocomplete="email"
+    placeholder="you@company.com"
+    class="min-w-0 flex-1 rounded-full border border-[var(--color-line)] bg-[var(--color-paper)] px-4 py-2.5 text-sm placeholder:text-[var(--color-ink-2)] focus:border-[var(--color-coral)]"
+  />
+  <button type="submit" class="btn btn-primary whitespace-nowrap">
+    Subscribe <Icon name="arrow" />
+  </button>
+</form>
+{!hasProvider && (
+  <p class="mt-2 text-xs text-[var(--color-ink-2)]">
+    Set <code class="font-mono">PUBLIC_NEWSLETTER_ACTION</code> to connect your provider. Until then this opens your mail client.
+  </p>
+)}
