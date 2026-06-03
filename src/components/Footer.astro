@@ -1,5 +1,6 @@
 ---
 import { socials, site, newsletter } from "@/data/site";
+import NewsletterForm from "@/components/NewsletterForm.astro";
 import Icon from "@/components/Icon.astro";
 const year = 2026;
 
@@ -30,9 +31,7 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
       <div>
         <h3 class={labelClass}>Stay in touch</h3>
         <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
-        <a href="/newsletter" class="btn btn-primary mt-4">
-          Subscribe <Icon name="arrow" />
-        </a>
+        <div class="mt-4"><NewsletterForm compact /></div>
       </div>
 
       <!-- 2. Explore + Labs -->
