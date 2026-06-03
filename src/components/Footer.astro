@@ -1,6 +1,5 @@
 ---
 import { socials, site, newsletter } from "@/data/site";
-import { projects } from "@/data/projects";
 import Icon from "@/components/Icon.astro";
 const year = 2026;
 
@@ -42,7 +41,6 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
           <h3 class={labelClass}>Explore</h3>
           <ul class="mt-4 flex flex-col gap-2.5 text-sm">
             <li><a href="/" class={linkClass}>Home</a></li>
-            <li><a href="/contact" class={linkClass}>Contact</a></li>
             <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
           </ul>
         </nav>
@@ -50,9 +48,6 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
           <h3 class={labelClass}>Labs</h3>
           <ul class="mt-4 flex flex-col gap-2.5 text-sm">
             <li><a href="/labs" class={linkClass}>All projects</a></li>
-            {projects.map((p) => (
-              <li><a href="/labs" class={linkClass}>{p.name}</a></li>
-            ))}
           </ul>
         </nav>
       </div>
