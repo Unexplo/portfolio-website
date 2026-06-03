@@ -26,9 +26,9 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
     </div>
 
     <!-- Columns -->
-    <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+    <div class="mt-10 grid grid-cols-1 items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-[2.2fr_1fr_1fr_1fr]">
       <!-- 1. Stay in touch -->
-      <div class="col-span-2 sm:col-span-1">
+      <div>
         <h3 class={labelClass}>Stay in touch</h3>
         <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
         <a href="/newsletter" class="btn btn-primary mt-4 !py-1.5 !text-sm">
@@ -57,22 +57,22 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
         </ul>
       </nav>
 
-      <!-- 4. Academy -->
-      <nav aria-label="Academy">
-        <h3 class={labelClass}>Academy</h3>
-        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-          <li><a href="/academy" class={linkClass}>Intro to AI</a></li>
-          <li><a href="/academy#register" class={linkClass}>Register</a></li>
-        </ul>
-      </nav>
-
-      <!-- 5. Roadmap -->
-      <nav aria-label="Roadmap">
-        <h3 class={labelClass}>Roadmap</h3>
-        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-          <li><a href="/roadmap" class={linkClass}>What we're building</a></li>
-        </ul>
-      </nav>
+      <!-- 4. Academy + Roadmap -->
+      <div>
+        <nav aria-label="Academy">
+          <h3 class={labelClass}>Academy</h3>
+          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+            <li><a href="/academy" class={linkClass}>Intro to AI</a></li>
+            <li><a href="/academy#register" class={linkClass}>Register</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Roadmap" class="mt-6">
+          <h3 class={labelClass}>Roadmap</h3>
+          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+            <li><a href="/roadmap" class={linkClass}>What we're building</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 
