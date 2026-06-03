@@ -9,64 +9,66 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
 
 <footer class="mt-20 border-t border-[var(--color-line)]">
   <div class="wrap py-12">
-    <!-- Brand -->
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-      <div class="max-w-md">
-        <a href="/" class="font-display text-lg">{site.name}</a>
-        <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{site.tagline}</p>
-      </div>
-      <div class="flex items-center gap-4">
-        {socials.map((s) => (
-          <a href={s.url} target="_blank" rel="noopener" aria-label={s.label} class={linkClass}>
-            <Icon name={s.icon as "github" | "x"} />
-          </a>
-        ))}
-      </div>
-    </div>
+    <!-- Tagline: above and centered -->
+    <p class="text-center text-sm text-[var(--color-ink-2)]">{site.tagline}</p>
 
-    <!-- Columns -->
-    <div class="mt-10 grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-[2.4fr_1fr_1fr]">
-      <!-- 1. Stay in touch -->
-      <div>
+    <!-- Main: brand + link columns (left) · Subscribe panel (fills the rest) -->
+    <div class="mt-10 flex flex-col gap-8 lg:flex-row lg:items-stretch">
+      <div class="flex flex-col gap-8 sm:flex-row sm:gap-14">
+        <!-- Brand -->
+        <div>
+          <a href="/" class="font-display text-lg">{site.name}</a>
+          <div class="mt-4 flex items-center gap-4">
+            {socials.map((s) => (
+              <a href={s.url} target="_blank" rel="noopener" aria-label={s.label} class={linkClass}>
+                <Icon name={s.icon as "github" | "x"} />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Explore + Labs -->
+        <div>
+          <nav aria-label="Explore">
+            <h3 class={labelClass}>Explore</h3>
+            <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+              <li><a href="/" class={linkClass}>Home</a></li>
+              <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Labs" class="mt-6">
+            <h3 class={labelClass}>Labs</h3>
+            <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+              <li><a href="/labs" class={linkClass}>All projects</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Academy + Roadmap -->
+        <div>
+          <nav aria-label="Academy">
+            <h3 class={labelClass}>Academy</h3>
+            <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+              <li><a href="/academy" class={linkClass}>Intro to AI</a></li>
+              <li><a href="/academy#register" class={linkClass}>Register</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Roadmap" class="mt-6">
+            <h3 class={labelClass}>Roadmap</h3>
+            <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+              <li><a href="/roadmap" class={linkClass}>What we're building</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Subscribe: takes the entire rest of the width and height -->
+      <div class="card flex flex-1 flex-col justify-center gap-3 p-8">
         <h3 class={labelClass}>Stay in touch</h3>
-        <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
-        <a href="/newsletter" class="btn btn-primary mt-4 !py-1.5 !text-sm">
+        <p class="text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
+        <a href="/newsletter" class="btn btn-primary mt-1 self-start !py-1.5 !text-sm">
           Subscribe <Icon name="arrow" />
         </a>
-      </div>
-
-      <!-- 2. Explore + Labs -->
-      <div>
-        <nav aria-label="Explore">
-          <h3 class={labelClass}>Explore</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/" class={linkClass}>Home</a></li>
-            <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Labs" class="mt-6">
-          <h3 class={labelClass}>Labs</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/labs" class={linkClass}>All projects</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <!-- 3. Academy + Roadmap -->
-      <div>
-        <nav aria-label="Academy">
-          <h3 class={labelClass}>Academy</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/academy" class={linkClass}>Intro to AI</a></li>
-            <li><a href="/academy#register" class={linkClass}>Register</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Roadmap" class="mt-6">
-          <h3 class={labelClass}>Roadmap</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/roadmap" class={linkClass}>What we're building</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
   </div>
