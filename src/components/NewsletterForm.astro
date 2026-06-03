@@ -28,9 +28,12 @@ const method = hasProvider ? "post" : "get";
     required
     autocomplete="email"
     placeholder="you@company.com"
-    class="min-w-0 flex-1 rounded-full border border-[var(--color-line)] bg-[var(--color-paper)] px-4 py-2.5 text-sm placeholder:text-[var(--color-ink-2)] focus:border-[var(--color-coral)]"
+    class:list={[
+      "min-w-0 flex-1 rounded-full border border-[var(--color-line)] bg-[var(--color-paper)] px-4 text-sm placeholder:text-[var(--color-ink-2)] focus:border-[var(--color-coral)]",
+      compact ? "py-1.5" : "py-2.5",
+    ]}
   />
-  <button type="submit" class="btn btn-primary whitespace-nowrap">
+  <button type="submit" class:list={["btn btn-primary whitespace-nowrap", compact && "!py-1.5 !text-sm"]}>
     Subscribe <Icon name="arrow" />
   </button>
 </form>
