@@ -26,7 +26,7 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
     </div>
 
     <!-- Columns -->
-    <div class="mt-10 grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-[2.2fr_1fr_1fr_1fr]">
+    <div class="mt-10 grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-[2.4fr_1fr_1fr]">
       <!-- 1. Stay in touch -->
       <div>
         <h3 class={labelClass}>Stay in touch</h3>
@@ -36,28 +36,28 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
         </a>
       </div>
 
-      <!-- 2. Explore -->
-      <nav aria-label="Explore">
-        <h3 class={labelClass}>Explore</h3>
-        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-          <li><a href="/" class={linkClass}>Home</a></li>
-          <li><a href="/contact" class={linkClass}>Contact</a></li>
-          <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
-        </ul>
-      </nav>
+      <!-- 2. Explore + Labs -->
+      <div>
+        <nav aria-label="Explore">
+          <h3 class={labelClass}>Explore</h3>
+          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+            <li><a href="/" class={linkClass}>Home</a></li>
+            <li><a href="/contact" class={linkClass}>Contact</a></li>
+            <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Labs" class="mt-6">
+          <h3 class={labelClass}>Labs</h3>
+          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+            <li><a href="/labs" class={linkClass}>All projects</a></li>
+            {projects.map((p) => (
+              <li><a href="/labs" class={linkClass}>{p.name}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
 
-      <!-- 3. Labs -->
-      <nav aria-label="Labs">
-        <h3 class={labelClass}>Labs</h3>
-        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-          <li><a href="/labs" class={linkClass}>All projects</a></li>
-          {projects.map((p) => (
-            <li><a href="/labs" class={linkClass}>{p.name}</a></li>
-          ))}
-        </ul>
-      </nav>
-
-      <!-- 4. Academy + Roadmap -->
+      <!-- 3. Academy + Roadmap -->
       <div>
         <nav aria-label="Academy">
           <h3 class={labelClass}>Academy</h3>
