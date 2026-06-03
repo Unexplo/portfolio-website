@@ -5,8 +5,7 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 <header class="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-paper)]/85 backdrop-blur-md">
   <div class="wrap flex h-16 items-center justify-between">
-    <a href="/" class="flex items-center gap-2 font-display text-xl tracking-tight" aria-label={`${site.name} home`}>
-      <span class="inline-block h-2.5 w-2.5 rounded-full bg-[var(--color-coral)]"></span>
+    <a href="/" class="font-display text-xl tracking-tight" aria-label={`${site.name} home`}>
       {site.name}
     </a>
 
