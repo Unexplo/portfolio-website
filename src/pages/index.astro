@@ -97,6 +97,12 @@ const jsonLd = [
     </div>
   </Section>
 
+  <!-- Newsletter -->
+  <Section eyebrow="Unexplored" title={newsletter.tagline} id="newsletter">
+    <p slot="lead" class="mt-4 max-w-xl text-[var(--color-ink-2)]">{newsletter.description}</p>
+    <NewsletterForm />
+  </Section>
+
   <!-- Roadmap -->
   <Section eyebrow="Roadmap" title="What we're building">
     <p slot="lead" class="mt-4 max-w-2xl text-[var(--color-ink-2)]">
@@ -108,11 +114,5 @@ const jsonLd = [
         See the full roadmap <Icon name="arrow" />
       </a>
     </div>
-  </Section>
-
-  <!-- Newsletter -->
-  <Section eyebrow="Unexplored" title={newsletter.tagline} id="newsletter">
-    <p slot="lead" class="mt-4 max-w-xl text-[var(--color-ink-2)]">{newsletter.description}</p>
-    <NewsletterForm />
   </Section>
 </Base>
