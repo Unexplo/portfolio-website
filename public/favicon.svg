@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0c1320"/>
-  <g fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="32" height="32" rx="7" fill="#0e0f11"/>
+  <g fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <!-- U: left leg, rounded bottom, up into the shared middle leg -->
     <path d="M9 9 V16 a3 3 0 0 0 6 0 V9"/>
     <!-- N: left leg sits on the U's right leg (starts "inside" the U), diagonal, right leg -->

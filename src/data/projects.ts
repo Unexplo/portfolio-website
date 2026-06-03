@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "An AI co-creator for musicians, integrated into the production tools they already use.",
     domain: "Music & creativity",
     status: "Research",
-    accent: "emerald",
+    accent: "rose",
   },
   {
     slug: "steamdoku",

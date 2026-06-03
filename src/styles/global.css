@@ -5,20 +5,22 @@
    Ivory paper, ink text, clay/coral accent. Serif display + clean sans body.
 ---------------------------------------------------------------------------- */
 @theme {
-  /* "Deep frontier" — dark navy-black base, ice-white text, electric cyan accent. */
-  --color-paper: #0c1320;
-  --color-paper-2: #131c2e;
-  --color-ink: #e8eef7;
-  --color-ink-2: #aeb9cc;
-  --color-muted: #6c7a91;
-  --color-line: #e8eef714;
+  /* "Charcoal + Emerald" — neutral near-black base, ice text, emerald accent. */
+  --color-paper: #0e0f11;
+  --color-paper-2: #16181b;
+  --color-ink: #eceef0;
+  --color-ink-2: #aab0b8;
+  --color-muted: #6b7178;
+  --color-line: #eceef014;
 
   /* Accent. Token name kept as `coral` for back-compat with components. */
-  --color-coral: #38bdf8;
-  --color-coral-soft: #7dd3fc;
+  --color-coral: #34d399;
+  --color-coral-soft: #6ee7b7;
+  /* Category accents for the Labs cards (kept distinct from the brand green). */
   --color-indigo: #818cf8;
   --color-emerald: #34d399;
   --color-amber: #fbbf24;
+  --color-rose: #fb7185;
 
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
