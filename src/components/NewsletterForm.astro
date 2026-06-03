@@ -34,8 +34,3 @@ const method = hasProvider ? "post" : "get";
     Subscribe <Icon name="arrow" />
   </button>
 </form>
-{!hasProvider && (
-  <p class="mt-2 text-xs text-[var(--color-ink-2)]">
-    Set <code class="font-mono">PUBLIC_NEWSLETTER_ACTION</code> to connect your provider. Until then this opens your mail client.
-  </p>
-)}
