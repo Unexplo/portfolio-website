@@ -18,7 +18,7 @@ export const GET: APIRoute = () => {
     "",
     "## About Unexplo",
     "",
-    "Unexplo is an AI lab and implementation studio, and a Claude partner. We design, build, and operate practical AI systems, run our own product experiments, and teach what we learn. We believe in discovery-first prototyping, client ownership of code and data, shipping small to learn fast, and optimizing for practical outcomes over novelty.",
+    "Unexplo is an AI lab and implementation studio. We design, build, and operate practical AI systems, run our own product experiments, and teach what we learn. We believe in discovery-first prototyping, client ownership of code and data, shipping small to learn fast, and optimizing for practical outcomes over novelty.",
     "",
     "## Unexplo Labs — experiments and discovery",
     "",
