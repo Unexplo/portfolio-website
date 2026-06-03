@@ -5,18 +5,20 @@
    Ivory paper, ink text, clay/coral accent. Serif display + clean sans body.
 ---------------------------------------------------------------------------- */
 @theme {
-  --color-paper: #faf9f5;
-  --color-paper-2: #f3f1e9;
-  --color-ink: #1a1814;
-  --color-ink-2: #46423a;
-  --color-muted: #75706687;
-  --color-line: #1a181412;
+  /* "Deep frontier" — dark navy-black base, ice-white text, electric cyan accent. */
+  --color-paper: #0c1320;
+  --color-paper-2: #131c2e;
+  --color-ink: #e8eef7;
+  --color-ink-2: #aeb9cc;
+  --color-muted: #6c7a91;
+  --color-line: #e8eef714;
 
-  --color-coral: #c2603d;
-  --color-coral-soft: #e08a68;
-  --color-indigo: #5a6acf;
-  --color-emerald: #4f9d77;
-  --color-amber: #c9912f;
+  /* Accent. Token name kept as `coral` for back-compat with components. */
+  --color-coral: #38bdf8;
+  --color-coral-soft: #7dd3fc;
+  --color-indigo: #818cf8;
+  --color-emerald: #34d399;
+  --color-amber: #fbbf24;
 
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -25,24 +27,11 @@
   --radius-card: 1rem;
 }
 
-/* Dark mode via prefers-color-scheme — invert the paper/ink relationship. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-paper: #14130f;
-    --color-paper-2: #1d1b16;
-    --color-ink: #f4f1e8;
-    --color-ink-2: #c4bfb2;
-    --color-muted: #8b857780;
-    --color-line: #f4f1e814;
-    --color-coral: #e08a68;
-    --color-coral-soft: #c2603d;
-  }
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
   }
 
   body {
