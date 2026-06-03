@@ -10,10 +10,6 @@ const year = 2026;
     <div class="col-span-2 lg:col-span-1">
       <a href="/" class="font-display text-lg">{site.name}</a>
       <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{site.tagline}</p>
-      <a href={`mailto:${site.email}`} class="mt-3 inline-block text-sm text-[var(--color-ink-2)] hover:text-[var(--color-ink)]">
-        {site.email}
-      </a>
-      <p class="mt-6 text-xs text-[var(--color-muted)]">© {year} {site.name}. All rights reserved.</p>
     </div>
 
     <!-- Column 2: Explore (sitemap) -->
@@ -44,5 +40,11 @@ const year = 2026;
       <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
       <div class="mt-3"><NewsletterForm compact /></div>
     </div>
+  </div>
+
+  <!-- Bottom bar: contact + copyright, below the columns -->
+  <div class="wrap flex flex-col gap-2 border-t border-[var(--color-line)] py-5 text-xs text-[var(--color-ink-2)] sm:flex-row sm:items-center sm:justify-between">
+    <a href={`mailto:${site.email}`} class="hover:text-[var(--color-ink)]">{site.email}</a>
+    <p>© {year} {site.name}. All rights reserved.</p>
   </div>
 </footer>
