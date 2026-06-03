@@ -1,40 +1,78 @@
 ---
-import { nav, socials, site } from "@/data/site";
+import { socials, site, newsletter } from "@/data/site";
+import { projects } from "@/data/projects";
 import Icon from "@/components/Icon.astro";
 const year = 2026;
+
+const labelClass = "font-mono text-xs uppercase tracking-[0.16em] text-[var(--color-muted)]";
+const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
 ---
 
 <footer class="mt-20 border-t border-[var(--color-line)]">
   <div class="wrap py-12">
-    <!-- Brand row: wordmark · centered tagline · social icons -->
-    <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-      <a href="/" class="font-display text-lg leading-none">{site.name}</a>
-
-      <span class="text-sm text-[var(--color-ink-2)] sm:flex-1 sm:px-6 sm:text-center">{site.tagline}</span>
-
+    <!-- Brand -->
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div class="max-w-md">
+        <a href="/" class="font-display text-lg">{site.name}</a>
+        <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{site.tagline}</p>
+      </div>
       <div class="flex items-center gap-4">
         {socials.map((s) => (
-          <a href={s.url} target="_blank" rel="noopener" aria-label={s.label} class="text-[var(--color-ink-2)] hover:text-[var(--color-ink)]">
+          <a href={s.url} target="_blank" rel="noopener" aria-label={s.label} class={linkClass}>
             <Icon name={s.icon as "github" | "x"} />
           </a>
         ))}
       </div>
     </div>
 
-    <!-- Explore (one row) · Subscribe button -->
-    <div class="mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-        <h3 class="shrink-0 font-mono text-xs uppercase tracking-[0.16em] text-[var(--color-muted)]">Explore</h3>
-        <nav aria-label="Sitemap" class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {nav.map((item) => (
-            <a href={item.href} class="text-[var(--color-ink-2)] hover:text-[var(--color-ink)]">{item.label}</a>
-          ))}
-        </nav>
+    <!-- Columns -->
+    <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+      <!-- 1. Stay in touch -->
+      <div class="col-span-2 sm:col-span-1">
+        <h3 class={labelClass}>Stay in touch</h3>
+        <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
+        <a href="/newsletter" class="btn btn-primary mt-4 !py-1.5 !text-sm">
+          Subscribe <Icon name="arrow" />
+        </a>
       </div>
 
-      <a href="/newsletter" class="btn btn-primary shrink-0">
-        Subscribe to newsletter <Icon name="arrow" />
-      </a>
+      <!-- 2. Explore -->
+      <nav aria-label="Explore">
+        <h3 class={labelClass}>Explore</h3>
+        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+          <li><a href="/" class={linkClass}>Home</a></li>
+          <li><a href="/contact" class={linkClass}>Contact</a></li>
+          <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
+        </ul>
+      </nav>
+
+      <!-- 3. Labs -->
+      <nav aria-label="Labs">
+        <h3 class={labelClass}>Labs</h3>
+        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+          <li><a href="/labs" class={linkClass}>All projects</a></li>
+          {projects.map((p) => (
+            <li><a href="/labs" class={linkClass}>{p.name}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- 4. Academy -->
+      <nav aria-label="Academy">
+        <h3 class={labelClass}>Academy</h3>
+        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+          <li><a href="/academy" class={linkClass}>Intro to AI</a></li>
+          <li><a href="/academy#register" class={linkClass}>Register</a></li>
+        </ul>
+      </nav>
+
+      <!-- 5. Roadmap -->
+      <nav aria-label="Roadmap">
+        <h3 class={labelClass}>Roadmap</h3>
+        <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+          <li><a href="/roadmap" class={linkClass}>What we're building</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
 
