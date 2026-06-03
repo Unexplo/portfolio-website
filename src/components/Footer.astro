@@ -26,11 +26,11 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
 
     <!-- Columns -->
     <div class="mt-10 grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-[2.4fr_1fr_1fr]">
-      <!-- 1. Stay in touch -->
-      <div>
+      <!-- 1. Stay in touch (card panel, fills column height) -->
+      <div class="card flex h-full flex-col justify-center gap-3 p-8">
         <h3 class={labelClass}>Stay in touch</h3>
-        <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
-        <a href="/newsletter" class="btn btn-primary mt-4 !py-1.5 !text-sm">
+        <p class="text-sm text-[var(--color-ink-2)]">{newsletter.name} — {newsletter.tagline}</p>
+        <a href="/newsletter" class="btn btn-primary mt-1 self-start !py-1.5 !text-sm">
           Subscribe <Icon name="arrow" />
         </a>
       </div>
