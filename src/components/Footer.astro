@@ -10,12 +10,12 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
 
 <footer class="mt-20 border-t border-[var(--color-line)]">
   <div class="wrap py-12">
-    <!-- Brand -->
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-      <div class="max-w-md">
-        <a href="/" class="font-display text-lg">{site.name}</a>
-        <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{site.tagline}</p>
-      </div>
+    <!-- Brand row: wordmark · centered tagline · social icons -->
+    <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <a href="/" class="font-display text-lg leading-none">{site.name}</a>
+
+      <span class="text-sm text-[var(--color-ink-2)] sm:flex-1 sm:px-6 sm:text-center">{site.tagline}</span>
+
       <div class="flex items-center gap-4">
         {socials.map((s) => (
           <a href={s.url} target="_blank" rel="noopener" aria-label={s.label} class={linkClass}>
