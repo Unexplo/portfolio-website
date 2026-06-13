@@ -1,6 +1,5 @@
 import type { APIRoute } from "astro";
-import { site, newsletter, academy } from "@/data/site";
-import { projects } from "@/data/projects";
+import { site, newsletter } from "@/data/site";
 
 // llms.txt — a curated, LLM-friendly map of the site.
 // Spec: https://llmstxt.org/  (H1 title, blockquote summary, linked sections).
@@ -12,24 +11,13 @@ export const GET: APIRoute = () => {
     "",
     `> ${site.tagline} ${site.description}`,
     "",
-    "Unexplo is a Claude-partner AI lab and implementation studio. We run Labs (experiments and discovery), teach an Intro to AI through Unexplo Academy, publish the Unexplored newsletter, and build practical AI tools in the open on GitHub.",
+    "Unexplo collaborates and works with AI to help anyone understand it and put it to use — no jargon, no hype, just getting better together. We build a few products toward that goal; the first is the Unexplored newsletter.",
     "",
     "## Pages",
-    `- [Home](${u}/): Overview of Unexplo — Labs, Academy, Newsletter, and Roadmap.`,
-    `- [Labs](${u}/labs): Experiments and discovery across four projects.`,
-    `- [Academy](${u}/academy): ${academy.course} — a live ${academy.capacity}-seat cohort for building with AI.`,
-    `- [Newsletter](${u}/newsletter): ${newsletter.name} — ${newsletter.tagline}`,
-    `- [Roadmap](${u}/roadmap): Live Kanban of what we're building, synced from GitHub Projects.`,
-    `- [Contact](${u}/contact): Email ${site.email}, plus GitHub and X.`,
+    `- [Home](${u}/): About Unexplo, our roadmap of what we're building, and the ${newsletter.name} newsletter.`,
     "",
-    "## Labs projects",
-    ...projects.map((p) => `- ${p.name} (${p.status}, ${p.domain}): ${p.description}`),
-    "",
-    "## Academy",
-    `- ${academy.course}: ${academy.tagline} ${academy.format}, capped at ${academy.capacity} participants, beginner friendly.`,
-    "",
-    "## Open source",
-    "- GitHub org: https://github.com/Unexplo — official plugins, MCP servers (e.g. StrideHive), and experimental AI tools.",
+    "## What we're building",
+    `- ${newsletter.name} (newsletter, in progress): ${newsletter.tagline} ${newsletter.description} Subscribe at ${u}/`,
     "",
     "## Contact",
     `- Email: ${site.email}`,

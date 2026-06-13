@@ -1,7 +1,5 @@
 import type { APIRoute } from "astro";
-import { site, newsletter, academy } from "@/data/site";
-import { projects } from "@/data/projects";
-import { roadmap } from "@/data/roadmap";
+import { site, newsletter } from "@/data/site";
 
 // llms-full.txt — the full, self-contained context for LLMs in one document.
 export const GET: APIRoute = () => {
@@ -18,39 +16,16 @@ export const GET: APIRoute = () => {
     "",
     "## About Unexplo",
     "",
-    "Unexplo is an AI lab and implementation studio. We design, build, and operate practical AI systems, run our own product experiments, and teach what we learn. We believe in discovery-first prototyping, client ownership of code and data, shipping small to learn fast, and optimizing for practical outcomes over novelty.",
+    "Unexplo collaborates and works with AI to help anyone understand it and put it to use. We believe AI is nothing to be scared of — it's something to learn, use, and get better at, together. No jargon, no hype, just practical help. We build a few products toward that goal and share our roadmap openly.",
     "",
-    "## Unexplo Labs — experiments and discovery",
+    "## What we're building",
     "",
-    "The Labs are four products exploring what modern AI makes newly possible:",
-    "",
-    ...projects.flatMap((p) => [
-      `### ${p.name} — ${p.tagline}`,
-      `Status: ${p.status}. Domain: ${p.domain}.`,
-      p.description,
-      "",
-    ]),
-    "## Unexplo Academy",
-    "",
-    `${academy.course}: ${academy.tagline}`,
-    `Format: ${academy.format}. Capacity: ${academy.capacity} seats. Beginner friendly, no prior experience required.`,
-    "Curriculum: (1) What AI actually is; (2) Prompting that works; (3) Building with tools, retrieval, and agents; (4) Ship your first AI project.",
-    `Register at ${u}/academy or email ${site.email}.`,
+    "Our roadmap of products and initiatives. The first is the Unexplored newsletter; more to come.",
     "",
     "## Unexplored — the newsletter",
     "",
     `${newsletter.name}: ${newsletter.tagline} ${newsletter.description}`,
-    "Each issue covers what's working in business AI, what's emerging at the frontier, and the unknowns worth watching.",
-    `Subscribe at ${u}/newsletter.`,
-    "",
-    "## Roadmap",
-    "",
-    "What we're building, across Labs, Academy, and open source:",
-    ...roadmap.map((r) => `- [${r.status}] ${r.title}${r.area ? ` (${r.area})` : ""}${r.note ? ` — ${r.note}` : ""}`),
-    "",
-    "## Open source",
-    "",
-    "GitHub organization: https://github.com/Unexplo. Includes official Unexplo plugins, MCP servers such as StrideHive (wearable & motion data as Claude-callable tools), and experimental AI workflows.",
+    `Subscribe at ${u}/`,
     "",
     "## Contact",
     "",

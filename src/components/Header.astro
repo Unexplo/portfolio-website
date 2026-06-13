@@ -9,37 +9,41 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
       {site.name}
     </a>
 
-    <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
-      {nav.map((item) => {
-        const active = current === item.href;
-        return (
-          <a
-            href={item.href}
-            aria-current={active ? "page" : undefined}
-            class:list={[
-              "rounded-full px-3.5 py-1.5 text-sm transition-colors",
-              active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]",
-            ]}
-          >
-            {item.label}
-          </a>
-        );
-      })}
-    </nav>
+    {nav.length > 0 && (
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+        {nav.map((item) => {
+          const active = current === item.href;
+          return (
+            <a
+              href={item.href}
+              aria-current={active ? "page" : undefined}
+              class:list={[
+                "rounded-full px-3.5 py-1.5 text-sm transition-colors",
+                active ? "text-[var(--color-ink)]" : "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]",
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
+    )}
 
-    <details class="md:hidden">
-      <summary class="list-none cursor-pointer rounded-md border border-[var(--color-line)] px-3 py-1.5 text-sm">Menu</summary>
-      <div class="absolute left-0 right-0 mt-3 border-y border-[var(--color-line)] bg-[var(--color-paper)] px-6 py-4">
-        <ul class="flex flex-col gap-1">
-          {nav.map((item) => (
-            <li>
-              <a href={item.href} class="block rounded-md px-3 py-2 text-[var(--color-ink-2)] hover:bg-[var(--color-paper-2)] hover:text-[var(--color-ink)]">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </details>
+    {nav.length > 0 && (
+      <details class="md:hidden">
+        <summary class="list-none cursor-pointer rounded-md border border-[var(--color-line)] px-3 py-1.5 text-sm">Menu</summary>
+        <div class="absolute left-0 right-0 mt-3 border-y border-[var(--color-line)] bg-[var(--color-paper)] px-6 py-4">
+          <ul class="flex flex-col gap-1">
+            {nav.map((item) => (
+              <li>
+                <a href={item.href} class="block rounded-md px-3 py-2 text-[var(--color-ink-2)] hover:bg-[var(--color-paper-2)] hover:text-[var(--color-ink)]">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
+    )}
   </div>
 </header>

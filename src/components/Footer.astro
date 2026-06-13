@@ -1,10 +1,8 @@
 ---
-import { socials, site, newsletter } from "@/data/site";
-import NewsletterForm from "@/components/NewsletterForm.astro";
+import { socials, site } from "@/data/site";
 import Icon from "@/components/Icon.astro";
 const year = 2026;
 
-const labelClass = "font-mono text-xs uppercase tracking-[0.16em] text-[var(--color-muted)]";
 const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
 ---
 
@@ -22,50 +20,6 @@ const linkClass = "text-[var(--color-ink-2)] hover:text-[var(--color-ink)]";
             <Icon name={s.icon as "github" | "x"} />
           </a>
         ))}
-      </div>
-    </div>
-
-    <!-- Columns -->
-    <div class="mt-10 grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-[2.4fr_1fr_1fr]">
-      <!-- 1. Stay in touch -->
-      <div>
-        <h3 class={labelClass}>Stay in touch</h3>
-        <p class="mt-4 text-sm text-[var(--color-ink-2)]">{newsletter.tagline}</p>
-        <div class="mt-4 max-w-sm"><NewsletterForm compact /></div>
-      </div>
-
-      <!-- 2. Explore + Labs -->
-      <div>
-        <nav aria-label="Explore">
-          <h3 class={labelClass}>Explore</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/" class={linkClass}>Home</a></li>
-            <li><a href="https://github.com/Unexplo" target="_blank" rel="noopener" class={linkClass}>Open source</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Labs" class="mt-6">
-          <h3 class={labelClass}>Labs</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/labs" class={linkClass}>All projects</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <!-- 3. Academy + Roadmap -->
-      <div>
-        <nav aria-label="Academy">
-          <h3 class={labelClass}>Academy</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/academy" class={linkClass}>Intro to AI</a></li>
-            <li><a href="/academy#register" class={linkClass}>Register</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Roadmap" class="mt-6">
-          <h3 class={labelClass}>Roadmap</h3>
-          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
-            <li><a href="/roadmap" class={linkClass}>What we're building</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
   </div>
