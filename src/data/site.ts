@@ -31,9 +31,12 @@ export const socials = [
 ] as const;
 
 // Primary navigation. `external` links open in a new tab.
-// Empty for now — it's a single newsletter page. Add entries here as pages ship
-// and the header/footer will pick them up automatically.
-export const nav = [] as const;
+// Add entries here as pages ship; the header picks them up automatically.
+export const nav = [
+  { label: "Home", href: "/" },
+  { label: "Roadmap", href: "/roadmap" },
+  { label: "Newsletter", href: "/newsletter" },
+] as const;
 
 export const newsletter = {
   name: "Unexplored",

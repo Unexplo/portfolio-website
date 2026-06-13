@@ -1,13 +1,51 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Section from "@/components/Section.astro";
-import KanbanBoard from "@/components/KanbanBoard.astro";
-import NewsletterForm from "@/components/NewsletterForm.astro";
 import Icon from "@/components/Icon.astro";
 import { site, newsletter } from "@/data/site";
+
+const beliefs = [
+  {
+    t: "AI is for everyone",
+    d: "You don't need to be technical or already \"get it.\" If you're curious, you're qualified. We start where you are.",
+  },
+  {
+    t: "No fear, no hype",
+    d: "We talk straight about what AI can and can't do — in plain language, without the buzzwords or the doom.",
+  },
+  {
+    t: "Learn by doing",
+    d: "Small, practical steps beat big theory. We try things, share what works, and get a little better each week.",
+  },
+  {
+    t: "Better, together",
+    d: "Nobody has this fully figured out — including us. So we explore in the open and grow alongside you.",
+  },
+];
+
+const paths = [
+  {
+    t: "See what we're building",
+    d: "Our roadmap of what we're exploring and shipping as we work with AI.",
+    href: "/roadmap",
+  },
+  {
+    t: "Get better with AI weekly",
+    d: `${newsletter.name} — ${newsletter.tagline} Plain-language, for everyone.`,
+    href: "/newsletter",
+  },
+];
+
+const jsonLd = [
+  {
+    "@type": "SiteNavigationElement",
+    name: ["Home", "Roadmap", "Newsletter"],
+    url: [`${site.url}/`, `${site.url}/roadmap`, `${site.url}/newsletter`],
+  },
+];
 ---
 
-<Base path="/">
+<Base path="/" jsonLd={jsonLd}>
   <!-- Hero: the mission -->
   <section class="dotfield relative overflow-hidden border-b border-[var(--color-line)]">
     <div class="wrap py-24 md:py-32">
@@ -22,18 +60,33 @@ import { site, newsletter } from "@/data/site";
     </div>
   </section>
 
-  <!-- Roadmap: what we're building (the newsletter lives here as one product) -->
-  <Section eyebrow="Roadmap" title="What we're building" id="roadmap">
+  <!-- What we believe -->
+  <Section eyebrow="What we believe" title="AI, without the fear">
     <p slot="lead" class="mt-4 max-w-2xl text-[var(--color-ink-2)]">
-      The things we're exploring and shipping as we work with AI. More to come.
+      A few things we hold to — and how we'd love to help you.
     </p>
-    <KanbanBoard />
+    <div class="grid gap-4 sm:grid-cols-2">
+      {beliefs.map((b) => (
+        <div class="card p-6">
+          <h3 class="font-display text-xl">{b.t}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{b.d}</p>
+        </div>
+      ))}
+    </div>
   </Section>
 
-  <!-- Newsletter: one of the products, modestly placed -->
-  <Section eyebrow={newsletter.name} title={newsletter.tagline} id="newsletter">
-    <p slot="lead" class="mt-4 max-w-xl text-[var(--color-ink-2)]">{newsletter.description}</p>
-    <NewsletterForm />
-    <p class="mt-3 text-xs text-[var(--color-muted)]">One email a week. Unsubscribe anytime.</p>
+  <!-- Where to go next -->
+  <Section eyebrow="Start here" title="Two ways in">
+    <div class="grid gap-4 md:grid-cols-2">
+      {paths.map((p) => (
+        <a href={p.href} class="card group p-6 transition-transform hover:-translate-y-1">
+          <div class="flex items-center justify-between">
+            <h3 class="font-display text-xl">{p.t}</h3>
+            <Icon name="arrow" class="text-[var(--color-ink-2)] transition-transform group-hover:translate-x-0.5" />
+          </div>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{p.d}</p>
+        </a>
+      ))}
+    </div>
   </Section>
 </Base>

@@ -1,0 +1,18 @@
+---
+import Base from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import KanbanBoard from "@/components/KanbanBoard.astro";
+---
+
+<Base
+  title="Roadmap"
+  description="What Unexplo is building and exploring as we work with AI."
+  path="/roadmap"
+>
+  <Section eyebrow="Roadmap" title="What we're building">
+    <p slot="lead" class="mt-4 max-w-2xl text-[var(--color-ink-2)]">
+      The things we're exploring and shipping as we work with AI. More to come.
+    </p>
+    <KanbanBoard />
+  </Section>
+</Base>
