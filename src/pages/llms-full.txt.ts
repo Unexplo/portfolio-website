@@ -16,7 +16,7 @@ export const GET: APIRoute = () => {
     "",
     "## About Unexplo",
     "",
-    "Unexplo collaborates and works with AI to help anyone understand it and put it to use. We believe AI is nothing to be scared of — it's something to learn, use, and get better at, together. No jargon, no hype, just practical help. We build a few products toward that goal and share our roadmap openly.",
+    "Unexplo is two things. First, we collaborate with AI to build things worth making — products, tools, and experiments. Second, we help people understand how to use AI to make everyday life better, cutting past the hype. We build products toward that goal and share our roadmap openly.",
     "",
     "## What we're building",
     "",

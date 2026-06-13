@@ -6,9 +6,9 @@ export const site = {
   legalName: "Unexplo",
   domain: "unexplo.com",
   url: "https://unexplo.com",
-  tagline: "Let's get better with AI, together.",
+  tagline: "We work with AI. So you can too.",
   description:
-    "Unexplo collaborates and works with AI to help anyone understand it and put it to use. Don't be scared of AI — learn it, use it, and grow with us. Start with the Unexplored newsletter.",
+    "Unexplo is two things: we collaborate with AI to build things worth making, and we help people understand how to use AI to make everyday life better.",
   email: "contact@unexplo.com",
   // Default Open Graph image (1200x630). Generated at /og.svg -> render to PNG if desired.
   ogImage: "/og.png",

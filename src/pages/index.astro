@@ -4,22 +4,14 @@ import Section from "@/components/Section.astro";
 import Icon from "@/components/Icon.astro";
 import { site, newsletter } from "@/data/site";
 
-const beliefs = [
+const pillars = [
   {
-    t: "AI is for everyone",
-    d: "You don't need to be technical or already \"get it.\" If you're curious, you're qualified. We start where you are.",
+    t: "Collaborate with AI",
+    d: "We partner with modern AI to design, build, and ship real things — products, tools, and experiments worth making.",
   },
   {
-    t: "No fear, no hype",
-    d: "We talk straight about what AI can and can't do — in plain language, without the buzzwords or the doom.",
-  },
-  {
-    t: "Learn by doing",
-    d: "Small, practical steps beat big theory. We try things, share what works, and get a little better each week.",
-  },
-  {
-    t: "Better, together",
-    d: "Nobody has this fully figured out — including us. So we explore in the open and grow alongside you.",
+    t: "AI for everyday life",
+    d: "We help people cut past the hype and actually use AI — at work, in creative projects, and in day-to-day life.",
   },
 ];
 
@@ -54,22 +46,19 @@ const jsonLd = [
         {site.tagline}
       </h1>
       <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-2)]">
-        Unexplo collaborates and works with AI to help anyone understand it and put it to use.
-        Don't be scared of AI — learn it, use it, and grow with us. That's what Unexplo is.
+        Unexplo is two things: we collaborate with AI to build things worth making, and we help
+        people understand how to use AI to make everyday life better.
       </p>
     </div>
   </section>
 
-  <!-- What we believe -->
-  <Section eyebrow="What we believe" title="AI, without the fear">
-    <p slot="lead" class="mt-4 max-w-2xl text-[var(--color-ink-2)]">
-      A few things we hold to — and how we'd love to help you.
-    </p>
+  <!-- What we do -->
+  <Section eyebrow="What we do" title="Two things, one frontier">
     <div class="grid gap-4 sm:grid-cols-2">
-      {beliefs.map((b) => (
-        <div class="card p-6">
-          <h3 class="font-display text-xl">{b.t}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{b.d}</p>
+      {pillars.map((p) => (
+        <div class="card p-6 md:p-8">
+          <h3 class="font-display text-xl md:text-2xl">{p.t}</h3>
+          <p class="mt-3 leading-relaxed text-[var(--color-ink-2)]">{p.d}</p>
         </div>
       ))}
     </div>
