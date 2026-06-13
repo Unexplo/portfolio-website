@@ -39,13 +39,15 @@ const jsonLd = [
 
 <Base path="/" jsonLd={jsonLd}>
   <!-- Hero: the mission -->
-  <section class="dotfield relative overflow-hidden border-b border-[var(--color-line)]">
-    <div class="wrap py-24 md:py-32">
+  <section class="relative overflow-hidden border-b border-[var(--color-line)]">
+    <span class="dotfield dotfield-mask absolute inset-0" aria-hidden="true"></span>
+    <span class="glow -top-40 left-1/4 h-[32rem] w-[32rem]" aria-hidden="true"></span>
+    <div class="wrap relative z-10 py-28 md:py-40">
       <p class="eyebrow flex items-center gap-2"><Icon name="spark" /> Unexplo</p>
-      <h1 class="mt-5 max-w-4xl text-5xl leading-[1.02] md:text-7xl">
-        {site.tagline}
+      <h1 class="mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">
+        We work with <span class="text-grad">AI</span>.<br />So <span class="italic">you</span> can too.
       </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-2)]">
+      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-2)]">
         Unexplo is two things: we collaborate with AI to build things worth making, and we help
         people understand how to use AI to make everyday life better.
       </p>
@@ -55,10 +57,13 @@ const jsonLd = [
   <!-- What we do -->
   <Section eyebrow="What we do" title="Two things, one frontier">
     <div class="grid gap-4 sm:grid-cols-2">
-      {pillars.map((p) => (
-        <div class="card p-6 md:p-8">
-          <h3 class="font-display text-xl md:text-2xl">{p.t}</h3>
-          <p class="mt-3 leading-relaxed text-[var(--color-ink-2)]">{p.d}</p>
+      {pillars.map((p, i) => (
+        <div class="card group relative overflow-hidden p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-coral)]/30 md:p-9">
+          <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-coral)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
+          <span class="glow -right-16 -top-16 h-40 w-40 !opacity-0 transition-opacity duration-300 group-hover:!opacity-25" aria-hidden="true"></span>
+          <span class="relative font-mono text-sm text-[var(--color-muted)]">0{i + 1}</span>
+          <h3 class="relative mt-4 font-display text-2xl md:text-3xl">{p.t}</h3>
+          <p class="relative mt-3 leading-relaxed text-[var(--color-ink-2)]">{p.d}</p>
         </div>
       ))}
     </div>
