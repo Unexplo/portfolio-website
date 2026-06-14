@@ -30,8 +30,7 @@ export const GET: APIRoute = () => {
     "## Contact",
     "",
     `Email: ${site.email}`,
-    "GitHub: https://github.com/Unexplo",
-    "X: https://x.com/unexplo",
+    "X: https://x.com/unexplo2k",
     "",
   ];
 

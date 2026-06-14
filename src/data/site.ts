@@ -17,15 +17,9 @@ export const site = {
 
 export const socials = [
   {
-    label: "GitHub",
-    handle: "@Unexplo",
-    url: "https://github.com/Unexplo",
-    icon: "github",
-  },
-  {
     label: "X",
-    handle: "@unexplo",
-    url: "https://x.com/unexplo",
+    handle: "@unexplo2k",
+    url: "https://x.com/unexplo2k",
     icon: "x",
   },
 ] as const;
