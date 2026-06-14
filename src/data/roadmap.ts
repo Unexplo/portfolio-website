@@ -26,4 +26,16 @@ export const roadmap: RoadmapItem[] = [
     area: "Newsletter",
     note: "Plain-language notes on getting better with AI — for everyone.",
   },
+  {
+    title: "Book-to-Markdown",
+    status: "Backlog",
+    area: "Reading & retention",
+    note: "Turn book text into clean, structured Markdown you can read, search, and build on.",
+  },
+  {
+    title: "Gamified health tracking",
+    status: "Backlog",
+    area: "Health & fitness",
+    note: "Strava, but gamified — make logging cardio and other health data something you actually want to do.",
+  },
 ];
