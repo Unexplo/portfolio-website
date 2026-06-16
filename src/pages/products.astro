@@ -1,0 +1,38 @@
+---
+import Base from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import NewsletterForm from "@/components/NewsletterForm.astro";
+import { site, newsletter } from "@/data/site";
+
+const jsonLd = [
+  {
+    "@type": "CollectionPage",
+    name: "Products",
+    description: "The products and ventures Unexplo is building.",
+    url: `${site.url}/products`,
+  },
+];
+---
+
+<Base
+  title="Products"
+  description="The products and ventures Unexplo is building — focused tools that bring AI into everyday life."
+  path="/products"
+  jsonLd={jsonLd}
+>
+  <Section eyebrow="Products" title="What we're building">
+    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
+      Unexplo is a studio. Each product we build gets its own home — focused tools that put AI to
+      work in everyday life. The first ones are on the way.
+    </p>
+
+    <div class="card max-w-xl p-8">
+      <h2 class="font-display text-xl">Nothing here yet — but not for long.</h2>
+      <p class="mt-2 leading-relaxed text-[var(--color-ink-2)]">
+        We're heads-down building. Join {newsletter.name} to be the first to see what we ship, with
+        early access before anyone else.
+      </p>
+      <div class="mt-6"><NewsletterForm /></div>
+    </div>
+  </Section>
+</Base>

@@ -28,6 +28,7 @@ export const socials = [
 // Add entries here as pages ship; the header picks them up automatically.
 export const nav = [
   { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
   { label: "Newsletter", href: "/newsletter" },
 ] as const;
 
@@ -35,7 +36,7 @@ export const newsletter = {
   name: "Unexplored",
   tagline: "Get better with AI, one email at a time.",
   description:
-    "Plain-language notes on what AI can do, how to actually use it, and what's worth paying attention to — for everyone, no jargon, no hype.",
+    "Plain-language notes on what AI can do and how to actually use it in everyday life — plus first looks at the products we're building. For everyone, no jargon, no hype.",
   // Falls back to a mailto if no provider action is configured.
   action: import.meta.env.PUBLIC_NEWSLETTER_ACTION ?? "",
 } as const;
