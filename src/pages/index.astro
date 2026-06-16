@@ -6,29 +6,24 @@ import { site, newsletter } from "@/data/site";
 
 const pillars = [
   {
-    t: "Collaborate with AI",
-    d: "We partner with modern AI to design, build, and ship real things — products, tools, and experiments worth making.",
+    t: "AI for everyone",
+    d: "Not built for experts or the few. We make AI approachable so anyone can pick it up and put it to work in their own life.",
   },
   {
-    t: "AI for everyday life",
-    d: "We help people cut past the hype and actually use AI — at work, in creative projects, and in day-to-day life.",
+    t: "With people, not against them",
+    d: "We build AI to amplify what people do — not to replace them. Tools that work alongside you, so there's nothing to fear.",
   },
   {
-    t: "Always exploring",
-    d: "AI moves fast. We keep digging into what's new and what's actually useful — and bring back what's worth your time.",
+    t: "Woven into everyday life",
+    d: "The best AI fades into the background — quietly making ordinary moments at work, at home, and in between a little easier.",
   },
   {
-    t: "Practical over hype",
-    d: "We care about what actually works and ships, not demos that impress for a minute and disappear.",
+    t: "Real help over hype",
+    d: "We care about what genuinely helps real people, not demos that dazzle for a minute and disappear.",
   },
 ];
 
 const paths = [
-  {
-    t: "See what we're building",
-    d: "Our roadmap of what we're exploring and shipping as we work with AI.",
-    href: "/roadmap",
-  },
   {
     t: "Get better with AI weekly",
     d: `${newsletter.name} — ${newsletter.tagline} Plain-language, for everyone.`,
@@ -39,8 +34,8 @@ const paths = [
 const jsonLd = [
   {
     "@type": "SiteNavigationElement",
-    name: ["Home", "Roadmap", "Newsletter"],
-    url: [`${site.url}/`, `${site.url}/roadmap`, `${site.url}/newsletter`],
+    name: ["Home", "Newsletter"],
+    url: [`${site.url}/`, `${site.url}/newsletter`],
   },
 ];
 ---
@@ -78,8 +73,8 @@ const jsonLd = [
   </Section>
 
   <!-- Where to go next -->
-  <Section eyebrow="Start here" title="Two ways in">
-    <div class="grid gap-4 md:grid-cols-2">
+  <Section eyebrow="Start here" title="Get started">
+    <div class="grid gap-4">
       {paths.map((p) => (
         <a href={p.href} class="card group p-6 transition-transform hover:-translate-y-1">
           <div class="flex items-center justify-between">

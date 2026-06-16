@@ -28,7 +28,6 @@ export const socials = [
 // Add entries here as pages ship; the header picks them up automatically.
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "Roadmap", href: "/roadmap" },
   { label: "Newsletter", href: "/newsletter" },
 ] as const;
 
