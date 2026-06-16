@@ -36,7 +36,7 @@ export const newsletter = {
   name: "Unexplored",
   tagline: "Get better with AI, one email at a time.",
   description:
-    "Plain-language notes on what AI can do and how to actually use it in everyday life — plus first looks at the products we're building. For everyone, no jargon, no hype.",
+    "What AI can really do and how to use it day to day — plus first looks at what we're building. No jargon, no hype.",
   // Falls back to a mailto if no provider action is configured.
   action: import.meta.env.PUBLIC_NEWSLETTER_ACTION ?? "",
 } as const;
