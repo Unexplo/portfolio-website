@@ -26,7 +26,13 @@ const jsonLd = [
       {newsletter.description}
     </p>
 
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="card max-w-2xl p-8">
+      <h2 class="font-display text-xl">Subscribe</h2>
+      <p class="mt-1.5 text-sm text-[var(--color-ink-2)]">One email a week. Unsubscribe anytime.</p>
+      <div class="mt-5"><NewsletterForm /></div>
+    </div>
+
+    <div class="mt-4 grid max-w-2xl gap-4 sm:grid-cols-2">
       <div class="card p-7">
         <h3 class="font-display text-xl">AI you can actually use</h3>
         <p class="mt-2 leading-relaxed text-[var(--color-ink-2)]">
@@ -41,12 +47,6 @@ const jsonLd = [
           thinking behind it.
         </p>
       </div>
-    </div>
-
-    <div class="card mt-4 max-w-xl p-8">
-      <h2 class="font-display text-xl">Subscribe</h2>
-      <p class="mt-1.5 text-sm text-[var(--color-ink-2)]">One email a week. Unsubscribe anytime.</p>
-      <div class="mt-5"><NewsletterForm /></div>
     </div>
   </Section>
 </Base>
