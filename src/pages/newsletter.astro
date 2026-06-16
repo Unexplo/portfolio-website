@@ -21,18 +21,21 @@ const jsonLd = [
   path="/newsletter"
   jsonLd={jsonLd}
 >
-  <Section eyebrow={newsletter.name} title={newsletter.tagline}>
-    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
-      {newsletter.description}
-    </p>
+  <Section eyebrow={newsletter.name}>
+    <div class="grid gap-8 md:grid-cols-2 md:items-start">
+      <div>
+        <h1 class="text-3xl md:text-4xl">{newsletter.tagline}</h1>
+        <p class="mt-4 text-lg text-[var(--color-ink-2)]">{newsletter.description}</p>
+      </div>
 
-    <div class="card max-w-2xl p-8">
-      <h2 class="font-display text-xl">Subscribe</h2>
-      <p class="mt-1.5 text-sm text-[var(--color-ink-2)]">One email a week. Unsubscribe anytime.</p>
-      <div class="mt-5"><NewsletterForm /></div>
+      <div class="card p-8">
+        <h2 class="font-display text-xl">Subscribe</h2>
+        <p class="mt-1.5 text-sm text-[var(--color-ink-2)]">One email a week. Unsubscribe anytime.</p>
+        <div class="mt-5"><NewsletterForm /></div>
+      </div>
     </div>
 
-    <div class="mt-4 grid max-w-2xl gap-4 sm:grid-cols-2">
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">
       <div class="card p-7">
         <h3 class="font-display text-xl">AI you can actually use</h3>
         <p class="mt-2 leading-relaxed text-[var(--color-ink-2)]">
