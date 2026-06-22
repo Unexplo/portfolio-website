@@ -5,8 +5,19 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 <header class="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-paper)]/85 backdrop-blur-md">
   <div class="wrap flex h-16 items-center justify-between">
-    <a href="/" class="font-display text-xl tracking-tight" aria-label={`${site.name} home`}>
-      {site.name}
+    <a href="/" class="group flex items-center gap-2.5" aria-label={`${site.name} home`}>
+      <svg viewBox="0 0 30 20" width="30" height="20" fill="none" aria-hidden="true" class="overflow-visible">
+        <g stroke="var(--color-coral)" stroke-width="1.6" opacity="0.7">
+          <line x1="4" y1="11" x2="15" y2="4" />
+          <line x1="15" y1="4" x2="26" y2="11" />
+          <line x1="15" y1="4" x2="15" y2="16" />
+        </g>
+        <circle cx="4" cy="11" r="2.4" fill="var(--color-ink)" />
+        <circle cx="26" cy="11" r="2.4" fill="var(--color-ink)" />
+        <circle cx="15" cy="16" r="2.4" fill="var(--color-ink)" />
+        <circle cx="15" cy="4" r="3.2" fill="var(--color-coral)" />
+      </svg>
+      <span class="font-display text-lg font-medium tracking-[0.28em]">UNEXPLO</span>
     </a>
 
     {nav.length > 0 && (

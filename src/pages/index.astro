@@ -4,6 +4,31 @@ import Section from "@/components/Section.astro";
 import Icon from "@/components/Icon.astro";
 import { site, engine, acronym } from "@/data/site";
 
+// --- Hero "discovery graph": UNEXPLO spelled out as a node-link diagram ---
+// Each capital letter is a node; the path U→N→E→X→P→L→O is the brand.
+// Satellite nodes branch off to evoke discovered data points.
+const heroLetters = ["U", "N", "E", "X", "P", "L", "O"];
+const heroYs = [132, 94, 166, 102, 170, 98, 140];
+const nodeStartX = 80;
+const nodeStep = 128;
+const heroNodes = heroLetters.map((l, i) => ({ l, x: nodeStartX + i * nodeStep, y: heroYs[i] }));
+const heroEdges = heroNodes.slice(0, -1).map((n, i) => {
+  const m = heroNodes[i + 1];
+  return { x1: n.x, y1: n.y, x2: m.x, y2: m.y, len: Math.round(Math.hypot(m.x - n.x, m.y - n.y)) };
+});
+const heroSats = [
+  { from: 0, dx: -54, dy: 58 },
+  { from: 1, dx: -58, dy: -62 },
+  { from: 3, dx: 6, dy: 86 },
+  { from: 5, dx: 54, dy: -60 },
+  { from: 6, dx: 72, dy: 44 },
+].map((s) => {
+  const n = heroNodes[s.from];
+  const x = n.x + s.dx;
+  const y = n.y + s.dy;
+  return { x, y, x1: n.x, y1: n.y, len: Math.round(Math.hypot(s.dx, s.dy)) };
+});
+
 const jsonLd = [
   {
     "@type": "SoftwareApplication",
@@ -22,21 +47,55 @@ const jsonLd = [
 ---
 
 <Base path="/" jsonLd={jsonLd}>
-  <!-- Hero -->
-  <section class="relative overflow-hidden border-b border-[var(--color-line)]">
-    <span class="dotfield dotfield-mask absolute inset-0" aria-hidden="true"></span>
-    <span class="glow -top-40 left-1/4 h-[32rem] w-[32rem]" aria-hidden="true"></span>
-    <div class="wrap relative z-10 py-28 md:py-40">
-      <p class="eyebrow flex items-center gap-2"><Icon name="spark" /> Governed · AI-native</p>
-      <h1 class="mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">
-        Data discovery,<br /><span class="text-grad">governed by design</span>.
-      </h1>
-      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-2)]">
-        Unexplo is an AI-native data discovery tool. Its core engine — dbt, Kedro, and Obsidian —
-        is modular enough to adapt to any requirement, abstract enough to avoid noisy logic, and
-        built to respect your freedom of choice.
+  <!-- Hero: the discovery graph — UNEXPLO as a node-link diagram -->
+  <section class="hero relative overflow-hidden border-b border-[var(--color-line)]">
+    <span class="hero-blueprint absolute inset-0" aria-hidden="true"></span>
+    <span class="glow -top-32 left-1/2 h-[34rem] w-[34rem] -translate-x-1/2" aria-hidden="true"></span>
+
+    <div class="wrap relative z-10 py-20 text-center md:py-28">
+      <p class="eyebrow"><Icon name="spark" class="-mt-0.5 mr-1.5 inline-block align-middle" /> Governed · AI-native data discovery</p>
+
+      <h1 class="sr-only">UNEXPLO — governed, AI-native data discovery</h1>
+
+      <div class="hero-graph mx-auto mt-10 w-full max-w-4xl" aria-hidden="true">
+        <svg viewBox="0 0 1010 256" class="h-auto w-full overflow-visible" role="img">
+          <!-- edges along the brand path -->
+          <g class="edges">
+            {heroEdges.map((e, i) => (
+              <line
+                class="edge"
+                x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+                style={`--len:${e.len};--i:${i}`}
+              />
+            ))}
+          </g>
+          <!-- satellite "discovered" nodes -->
+          <g class="sats">
+            {heroSats.map((s, i) => (
+              <g style={`--i:${i}`}>
+                <line class="sat-edge" x1={s.x1} y1={s.y1} x2={s.x} y2={s.y} style={`--len:${s.len}`} />
+                <circle class="sat" cx={s.x} cy={s.y} r="6" />
+              </g>
+            ))}
+          </g>
+          <!-- letter nodes spelling UNEXPLO -->
+          <g class="nodes">
+            {heroNodes.map((n, i) => (
+              <g class="gnode" style={`--i:${i};--ox:${n.x}px;--oy:${n.y}px`}>
+                <circle cx={n.x} cy={n.y} r="42" class="node-ring" />
+                <text x={n.x} y={n.y} class="node-letter" text-anchor="middle" dominant-baseline="central">{n.l}</text>
+              </g>
+            ))}
+          </g>
+        </svg>
+      </div>
+
+      <p class="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-2)]">
+        A governed, AI-native discovery engine — dbt, Kedro, and Obsidian — modular enough to adapt
+        to any requirement, abstract enough to avoid noisy logic, and built to respect your freedom
+        of choice.
       </p>
-      <div class="mt-9 flex flex-wrap items-center gap-3">
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
         <a href="#engine" class="btn btn-primary">See the engine <Icon name="arrow" /></a>
         <a href={`mailto:${site.email}`} class="btn btn-ghost">Get in touch</a>
       </div>
@@ -133,3 +192,92 @@ const jsonLd = [
     </div>
   </Section>
 </Base>
+
+<style>
+  /* The hero is the brand moment — it deliberately looks unlike the editorial
+     sections below: a blueprint canvas with an animated discovery graph. */
+  .hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--color-coral) 7%, transparent), transparent 70%),
+      var(--color-paper);
+  }
+
+  /* faint blueprint grid, faded out toward the edges */
+  .hero-blueprint {
+    background-image:
+      linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 45%, #000 25%, transparent 85%);
+    mask-image: radial-gradient(ellipse 75% 80% at 50% 45%, #000 25%, transparent 85%);
+  }
+
+  /* --- graph elements --- */
+  .edge {
+    stroke: var(--color-coral);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+  .sat-edge {
+    stroke: var(--color-coral);
+    stroke-width: 1.5;
+    stroke-dasharray: 2 5;
+    stroke-linecap: round;
+    opacity: 0.5;
+  }
+  .sat {
+    fill: var(--color-coral);
+  }
+  .node-ring {
+    fill: var(--color-paper);
+    stroke: var(--color-coral);
+    stroke-width: 2.5;
+  }
+  .node-letter {
+    fill: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 46px;
+    font-weight: 500;
+  }
+
+  /* --- animation --- */
+  @media (prefers-reduced-motion: no-preference) {
+    .edge {
+      stroke-dasharray: var(--len);
+      stroke-dashoffset: var(--len);
+      animation: draw 0.7s ease forwards;
+      animation-delay: calc(0.5s + var(--i, 0) * 0.13s);
+    }
+    .sat {
+      opacity: 0;
+      animation: pulse 2.4s ease-in-out infinite;
+      animation-delay: calc(1.5s + var(--i) * 0.2s);
+    }
+    .gnode {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-delay: calc(var(--i) * 0.13s);
+    }
+    .sat {
+      animation: pulse 2.4s ease-in-out infinite;
+      animation-delay: calc(1.4s + var(--i) * 0.2s);
+    }
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes draw-dashed {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.6); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+</style>
