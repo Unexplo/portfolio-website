@@ -2,88 +2,134 @@
 import Base from "@/layouts/Base.astro";
 import Section from "@/components/Section.astro";
 import Icon from "@/components/Icon.astro";
-import { site, newsletter } from "@/data/site";
-
-const pillars = [
-  {
-    t: "AI for everyone",
-    d: "Not built for experts or the few. We make AI approachable so anyone can pick it up and put it to work in their own life.",
-  },
-  {
-    t: "With people, not against them",
-    d: "We build AI to amplify what people do — not to replace them. Tools that work alongside you, so there's nothing to fear.",
-  },
-  {
-    t: "Woven into everyday life",
-    d: "The best AI fades into the background — quietly making ordinary moments at work, at home, and in between a little easier.",
-  },
-  {
-    t: "Real help over hype",
-    d: "We care about what genuinely helps real people, not demos that dazzle for a minute and disappear.",
-  },
-];
-
-const paths = [
-  {
-    t: "Get better with AI weekly",
-    d: `${newsletter.name} — ${newsletter.tagline} Plain-language, for everyone.`,
-    href: "/newsletter",
-  },
-];
+import { site, engine, acronym } from "@/data/site";
 
 const jsonLd = [
   {
+    "@type": "SoftwareApplication",
+    name: site.name,
+    applicationCategory: "BusinessApplication",
+    description: site.description,
+    url: site.url,
+    offers: { "@type": "Offer", category: "Data discovery" },
+  },
+  {
     "@type": "SiteNavigationElement",
-    name: ["Home", "Newsletter"],
-    url: [`${site.url}/`, `${site.url}/newsletter`],
+    name: ["Engine", "Principles", "Handoff"],
+    url: [`${site.url}/#engine`, `${site.url}/#principles`, `${site.url}/#handoff`],
   },
 ];
 ---
 
 <Base path="/" jsonLd={jsonLd}>
-  <!-- Hero: the mission -->
+  <!-- Hero -->
   <section class="relative overflow-hidden border-b border-[var(--color-line)]">
     <span class="dotfield dotfield-mask absolute inset-0" aria-hidden="true"></span>
     <span class="glow -top-40 left-1/4 h-[32rem] w-[32rem]" aria-hidden="true"></span>
     <div class="wrap relative z-10 py-28 md:py-40">
-      <p class="eyebrow flex items-center gap-2"><Icon name="spark" /> Unexplo</p>
+      <p class="eyebrow flex items-center gap-2"><Icon name="spark" /> Governed · AI-native</p>
       <h1 class="mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">
-        The <span class="text-grad">AI</span> age is here.<br />We're making it <span class="italic">ours</span>.
+        Data discovery,<br /><span class="text-grad">governed by design</span>.
       </h1>
       <p class="mt-7 max-w-2xl text-lg leading-relaxed text-[var(--color-ink-2)]">
-        Not a tool for the few — a force on everyone's side. We're building a future where AI works
-        with people, woven into the fabric of everyday life.
+        Unexplo is an AI-native data discovery tool. Its core engine — dbt, Kedro, and Obsidian —
+        is modular enough to adapt to any requirement, abstract enough to avoid noisy logic, and
+        built to respect your freedom of choice.
       </p>
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="#engine" class="btn btn-primary">See the engine <Icon name="arrow" /></a>
+        <a href={`mailto:${site.email}`} class="btn btn-ghost">Get in touch</a>
+      </div>
     </div>
   </section>
 
-  <!-- What we do -->
-  <Section eyebrow="What we do" title="What we're about">
-    <div class="grid gap-4 sm:grid-cols-2">
-      {pillars.map((p, i) => (
+  <!-- Pitch: make requirements less dumb -->
+  <Section eyebrow="The idea" title="Make requirements less dumb.">
+    <div class="grid gap-8 md:grid-cols-2 md:items-start">
+      <p class="text-lg leading-relaxed text-[var(--color-ink-2)]">
+        Rapid prototyping lets you write requirements that actually make sense to your engineering
+        teams. Tight integration makes the handoff seamless. Companies that work this way scale
+        faster than those that don't.
+      </p>
+      <p class="text-lg leading-relaxed text-[var(--color-ink-2)]">
+        So Unexplo is built to get you from a vague question to a clear, governed answer — fast —
+        without locking you into anyone's stack. Choose the right tools for a scalable future.
+      </p>
+    </div>
+  </Section>
+
+  <!-- Core engine -->
+  <Section id="engine" eyebrow="Core engine" title="Built on tools you can trust">
+    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
+      Three open, battle-tested tools form the discovery engine — modular enough to adapt to any
+      requirement, abstract enough to avoid noisy logic.
+    </p>
+
+    <div class="grid gap-4 sm:grid-cols-3">
+      {engine.map((e, i) => (
         <div class="card group relative overflow-hidden p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-coral)]/30 md:p-9">
           <span class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-coral)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></span>
-          <span class="glow -right-16 -top-16 h-40 w-40 !opacity-0 transition-opacity duration-300 group-hover:!opacity-25" aria-hidden="true"></span>
           <span class="relative font-mono text-sm text-[var(--color-muted)]">0{i + 1}</span>
-          <h3 class="relative mt-4 font-display text-2xl md:text-3xl">{p.t}</h3>
-          <p class="relative mt-3 leading-relaxed text-[var(--color-ink-2)]">{p.d}</p>
+          <h3 class="relative mt-4 font-display text-2xl md:text-3xl">{e.name}</h3>
+          <p class="relative mt-1 font-mono text-xs uppercase tracking-wider text-[var(--color-coral)]">{e.role}</p>
+          <p class="relative mt-3 leading-relaxed text-[var(--color-ink-2)]">{e.description}</p>
         </div>
       ))}
     </div>
   </Section>
 
-  <!-- Where to go next -->
-  <Section eyebrow="Start here" title="Get started">
-    <div class="grid gap-4">
-      {paths.map((p) => (
-        <a href={p.href} class="card group p-6 transition-transform hover:-translate-y-1">
-          <div class="flex items-center justify-between">
-            <h3 class="font-display text-xl">{p.t}</h3>
-            <Icon name="arrow" class="text-[var(--color-ink-2)] transition-transform group-hover:translate-x-0.5" />
+  <!-- Principles: UNEXPLO, spelled out -->
+  <Section id="principles" eyebrow="Principles" title="Every letter earns its place">
+    <p slot="lead" class="mt-4 max-w-2xl text-lg text-[var(--color-ink-2)]">
+      U·N·E·X·P·L·O — the seven principles the engine is built to uphold.
+    </p>
+
+    <ol class="grid gap-px overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2 lg:grid-cols-1">
+      {acronym.map((a) => (
+        <li class="flex items-baseline gap-5 bg-[var(--color-paper)] px-6 py-6 transition-colors hover:bg-[var(--color-paper-2)] sm:px-8">
+          <span class="font-display text-4xl leading-none text-[var(--color-coral)] md:text-5xl" aria-hidden="true">{a.letter}</span>
+          <div>
+            <h3 class="font-display text-xl md:text-2xl">{a.word}</h3>
+            <p class="mt-1 leading-relaxed text-[var(--color-ink-2)]">{a.note}</p>
           </div>
-          <p class="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">{p.d}</p>
-        </a>
+        </li>
       ))}
+    </ol>
+  </Section>
+
+  <!-- Compatibility & handoff -->
+  <Section id="handoff" eyebrow="Compatibility & handoff" title="Onboard fast. Leave whenever you want.">
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="card p-7 md:p-9">
+        <h3 class="font-display text-2xl">Adapts to your system</h3>
+        <p class="mt-3 leading-relaxed text-[var(--color-ink-2)]">
+          Built-in compatibility and handoff processes let Unexplo slot into any business analytics
+          system you already run. No rip-and-replace, no noisy logic — it adapts to your
+          requirements, not the other way around.
+        </p>
+      </div>
+      <div class="card p-7 md:p-9">
+        <h3 class="font-display text-2xl">No lock-in, ever</h3>
+        <p class="mt-3 leading-relaxed text-[var(--color-ink-2)]">
+          The same handoff that gets you onboarded quickly also lets you walk away at your choice.
+          Your lineage, models, and knowledge stay portable and open — we respect your freedom of
+          choice by design.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Closing CTA -->
+  <Section>
+    <div class="card relative overflow-hidden p-10 text-center md:p-16">
+      <span class="glow left-1/2 top-0 h-72 w-72 -translate-x-1/2" aria-hidden="true"></span>
+      <h2 class="relative mx-auto max-w-2xl text-3xl md:text-4xl">
+        Choose the right tools for a <span class="text-grad">scalable future</span>.
+      </h2>
+      <p class="relative mx-auto mt-4 max-w-xl text-[var(--color-ink-2)]">
+        See whether Unexplo fits the way your teams already work.
+      </p>
+      <a href={`mailto:${site.email}`} class="btn btn-primary relative mt-8">Get in touch <Icon name="arrow" /></a>
     </div>
   </Section>
 </Base>

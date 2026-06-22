@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0e0f11"/>
-  <g fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="32" height="32" rx="7" fill="#0a0a0b"/>
+  <g fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <!-- U and N share the same top (y=9) and bottom (y=22) for equal height -->
     <!-- U: left leg, rounded bottom, up into the shared middle leg -->
     <path d="M9 9 V19 a3 3 0 0 0 6 0 V9"/>

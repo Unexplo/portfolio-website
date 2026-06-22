@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------------------
-   Unexplo design tokens — warm editorial palette, Claude-partner aligned.
-   Ivory paper, ink text, clay/coral accent. Serif display + clean sans body.
+   Unexplo design tokens — clean editorial light palette.
+   White paper, near-black ink, a single restrained indigo accent.
+   Serif display (Fraunces) + clean sans body (Inter).
 ---------------------------------------------------------------------------- */
 @theme {
-  /* "Charcoal + Emerald" — neutral near-black base, ice text, emerald accent. */
-  --color-paper: #0e0f11;
-  --color-paper-2: #16181b;
-  --color-ink: #eceef0;
-  --color-ink-2: #aab0b8;
-  --color-muted: #6b7178;
-  --color-line: #eceef014;
+  /* "Paper white" — true-white base, near-black ink, soft graphite lines. */
+  --color-paper: #ffffff;
+  --color-paper-2: #f6f6f4;
+  --color-ink: #0a0a0b;
+  --color-ink-2: #52555c;
+  --color-muted: #8b9099;
+  --color-line: #0a0a0b14;
 
   /* Accent. Token name kept as `coral` for back-compat with components. */
-  --color-coral: #34d399;
-  --color-coral-soft: #6ee7b7;
-  /* Category accents for the Labs cards (kept distinct from the brand green). */
-  --color-indigo: #818cf8;
-  --color-emerald: #34d399;
-  --color-amber: #fbbf24;
-  --color-rose: #fb7185;
+  --color-coral: #4f46e5;
+  --color-coral-soft: #6366f1;
+  /* Secondary accents (kept distinct from the brand indigo). */
+  --color-indigo: #4f46e5;
+  --color-emerald: #0f766e;
+  --color-amber: #b45309;
+  --color-rose: #be123c;
 
   --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -33,7 +34,7 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -133,7 +134,7 @@
     position: absolute;
     border-radius: 9999px;
     filter: blur(90px);
-    opacity: 0.16;
+    opacity: 0.1;
     background: radial-gradient(circle, var(--color-coral), transparent 70%);
     pointer-events: none;
   }

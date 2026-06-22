@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { site, newsletter } from "@/data/site";
+import { site, engine } from "@/data/site";
 
 // llms.txt — a curated, LLM-friendly map of the site.
 // Spec: https://llmstxt.org/  (H1 title, blockquote summary, linked sections).
@@ -11,14 +11,13 @@ export const GET: APIRoute = () => {
     "",
     `> ${site.tagline} ${site.description}`,
     "",
-    "Unexplo's mission is a future where AI works with people, not against them — a positive ecosystem woven into the fabric of everyday life. We build approachable tools toward that goal; the first is the Unexplored newsletter.",
+    "Unexplo is a governed, AI-native data discovery tool. Rapid prototyping lets teams write requirements that make sense to engineers; tight integration makes the handoff seamless. The core engine is modular enough to adapt to any requirement, abstract enough to avoid noisy logic, with built-in compatibility and handoff so you can onboard quickly and leave at your choice.",
     "",
     "## Pages",
-    `- [Home](${u}/): Unexplo's mission — building a future where AI works for everyone, woven into everyday life.`,
-    `- [Newsletter](${u}/newsletter): ${newsletter.name} — ${newsletter.tagline}`,
+    `- [Home](${u}/): Governed, AI-native data discovery — the engine, principles, and handoff.`,
     "",
-    "## What we're building",
-    `- ${newsletter.name} (newsletter, in progress): ${newsletter.tagline} ${newsletter.description} Subscribe at ${u}/newsletter`,
+    "## Core engine",
+    ...engine.map((e) => `- ${e.name} — ${e.role}: ${e.description}`),
     "",
     "## Contact",
     `- Email: ${site.email}`,

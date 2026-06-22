@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { site, newsletter } from "@/data/site";
+import { site, engine, acronym } from "@/data/site";
 
 // llms-full.txt — the full, self-contained context for LLMs in one document.
 export const GET: APIRoute = () => {
@@ -16,16 +16,18 @@ export const GET: APIRoute = () => {
     "",
     "## About Unexplo",
     "",
-    "Unexplo's mission is a future where AI works with people, not against them — a positive ecosystem woven into the fabric of everyday life. AI is for everyone, not just experts or the few; it should amplify what people do rather than replace them. We cut past the hype and build approachable tools that offer real help in everyday life.",
+    "Unexplo is a governed, AI-native data discovery tool. The core engine is built on tools that are modular enough to adapt to any requirement, while abstract enough to avoid noisy logic — all the while respecting your freedom of choice. It has built-in compatibility and handoff processes to adapt to any business analytics system, so you can quickly onboard and leave at your choice.",
     "",
-    "## What we're building",
+    "## The idea",
     "",
-    "Approachable products that put AI to work in everyday life. The first is the Unexplored newsletter; more to come.",
+    "Make requirements less dumb. Rapid prototyping lets you write requirements that make sense to your engineering teams. Tight integration makes the handoff process seamless. Companies leveraging these principles scale faster than those that don't. Choose the right tools for a scalable future.",
     "",
-    "## Unexplored — the newsletter",
+    "## Core engine",
     "",
-    `${newsletter.name}: ${newsletter.tagline} ${newsletter.description}`,
-    `Subscribe at ${u}/`,
+    ...engine.map((e) => `### ${e.name} — ${e.role}\n${e.description}`).flatMap((s) => [s, ""]),
+    "## Principles (UNEXPLO)",
+    "",
+    ...acronym.map((a) => `- ${a.letter} — ${a.word}: ${a.note}`),
     "",
     "## Contact",
     "",
